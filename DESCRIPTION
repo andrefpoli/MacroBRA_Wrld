@@ -1,13 +1,13 @@
-Package: macroview
-Title: Dashboard: Macroeconomic Data of Brazil
+Package: Indicadores_Macro
+Title: Dashboard: Macroeconomic Data of Brazil and International
 Version: 0.0.1
 Authors@R: 
-    person(given = "Fernando",
-           family = "da Silva",
+    person(given = "Andre",
+           family = "Ferreira",
            role = c("aut", "cre"),
-           email = "fernando@fortietwo.com",
+           email = "contato@dynamic-hedge.com.br",
            comment = c(ORCID = "0000-0002-7491-6930"))
-Description: A dashboard of Brazilian macroeconomic data, using interactive charts and updated daily.
+Description: Dashboard interativo de dados macroeconômicos brasileiros e  internacionais.
 License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true

@@ -1,5 +1,5 @@
 ---
-title: "Macro View"
+title: "Dashboard - Macro"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -10,13 +10,13 @@ output:
     favicon: inst/imgs/favicon.png
     social: menu
     navbar:
-        - { icon: "fa-github", href: "https://github.com/schoulten/macroview", align: right }
-        - { icon: "fa-linkedin", href: "https://www.linkedin.com/in/schoulten/", align: right }
-        - { icon: "fa-at", href: "mailto:fernando@fortietwo.com", align: right }
+        - { icon: "fa-github", href: "https://github.com/andrefpoli/MacroBRA_Wrld", align: right }
+        - { icon: "fa-linkedin", href: "https://www.linkedin.com/in/andre-ferreira-5941819a/", align: right }
+        - { icon: "fa-at", href: "mailto:contato@dynamic-hedge.com.br", align: right }
 ---
 
 <script>
-$('.navbar-logo').wrap('<a href="https://fortietwo.com/" target=_blank>');
+$('.navbar-logo').wrap('<a href="https://dynamic-hedge.com.br/" target=_blank>');
 </script>
 
 <!-- Icons by Freepik -->
@@ -1202,30 +1202,33 @@ About {data-icon="fa-file-alt"}
 
 ### About {.no-title}
 
-This dashboard aims to facilitate the monitoring of macroeconomic data on the Brazilian economy, including the main indicators of:
+Este Dashboard foi construido no intuito de facilitar o acompanhamento de dados macroeconomicos brasileiros e internacionais, tais como:
 
-- Economic activity
-- Inflation
-- Labor market
-- Fiscal policy
-- Monetary policy
+- Dados de Atividade;
+- Inflação;
+- Mercado de Trabalho;
+- Política Fiscal;
+- Política Monetária;
+- Juros e Moedas Globais;
 
-The indicators are updated daily and come from public data sources. I hope this tool can be useful for you!
+Os indicadores são atualizados diariamente e são provenientes de fontes de dados públicas.
 
-If you find any errors or have any suggestions, feel free to contact me: <fernando@fortietwo.com>
+Caso encontre algum erro ou tenha alguma sugestão, pode entrar em contato através do seguinte endereço:<contato@dynamic-hedge.com.br>
+
+Esse Dashboard utilizou-se como base o seguinte projeto, o qual eu recomendo darem uma olhada caso tenham a intenção de replicá-lo <https://github.com/schoulten/macroview>
 
 <br>
 **Last update**: `r format(Sys.Date(), "%B %d, %Y")`.<br>
-**GitHub repo**: <https://github.com/schoulten/macroview>
+**GitHub repo**: <https://github.com/andrefpoli/MacroBRA_Wrld>
 
 
 <br>
-**Author**: *Fernando da Silva*
+**Author**: *Andre Ferreira*
 <br>
-I am an economist passionate about macroeconomics with 3 years of experience in analyzing the economic scenario. I do data analysis with time series and microdata using the power of R for automation. My work helps people to understand the economic scenario and make decisions.<br>
+Eu sou engenheiro formado pela Escola Politécnica da USP e atuo no mercado brasileiro como Trader de Renda Fixa. Constantemente realizo análises de séries temporais de ativos listados e/ou de dados macroeconomicos por meio do Python e R, visando extrair informações relevantes do mercado e no auxílio na automatização de estratégias. Espero que o conteúdo desse dashboard e do blog como um todo seja útil a todos que o visitam.<br>
 <br>
-**Website**: <https://fortietwo.com/><br>
-**GitHub**: <https://www.github.com/schoulten><br>
-**LinkedIn**: <https://www.linkedin.com/in/schoulten/><br>
+**Website**: <https://dynamic-hedge.com.br/><br>
+**GitHub**: <https://github.com/andrefpoli><br>
+**LinkedIn**: <https://www.linkedin.com/in/andre-ferreira-5941819a/><br>
 <br>
-<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="schoulten" data-color="#40DCA5" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="dynamichedge" data-color="#40DCA5" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
