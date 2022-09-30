@@ -30,6 +30,7 @@ knitr::opts_knit$set(progress = TRUE)
 if (!require("pacman")) install.packages("pacman")
 pacman::p_load(
   "rmarkdown",
+  "dplyr",
   "highcharter",
   "tidyverse",
   "flexdashboard",
@@ -60,7 +61,7 @@ colors_extra <- c(
   )
 
 # Load funcitons
-c("hc_plot_ft", "hc_theme_ft", "gt_sparkline", "utils") %>%
+c("hc_plot_ft","hc_theme_ft", "gt_sparkline", "utils") %>%
   paste0("./R/", ., ".R") %>% 
   purrr::walk(~source(.x))
 ```
@@ -182,11 +183,11 @@ gdp_trend
 ```{r section0_ipca_trend}
 inflation_trend <- hchart(
   ipca_trend, "column", hcaes(x = date, y = `Month over Month (%)`),
-       color = colors[1], name = "Month over Month", showInLegend = TRUE
+       name = "Month over Month", showInLegend = TRUE
   ) %>%
   hc_add_series(
     ipca_trend, "line", hcaes(x = date, y = `Year over Year (%)`),
-    color = colors[2], name = "Year over Year", showInLegend = TRUE
+     name = "Year over Year", showInLegend = TRUE
   ) %>% 
   hc_plot_ft(
     title     = "Inflation trend (IPCA)",

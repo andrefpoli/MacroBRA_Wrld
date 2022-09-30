@@ -29,3 +29,24 @@ theme_fortietwo <- highcharter::hc_theme_merge(
     )
   )
 )
+
+theme_DYH <- hc_theme_merge(
+  hc_theme_darkunica(),
+  hc_theme(
+    chart = list(
+      backgroundColor = 'transparent',
+      divBackgroundImage = "http://www.wired.com/images_blogs/underwire/2013/02/xwing-bg.gif"
+    ),
+    title = list(
+      style = list(color = "white",fontFamily = "Open Sans",fontSize = "25px")
+    ),
+    subtitle = list(
+      style = list(color = "white",fontFamily = "Open Sans",fontSize = "15px"),
+      align = "center"
+    ),
+    legend = list(
+      itemStyle = list(color = "white",fontFamily = "Open Sans",fontSize = "15px")
+    )
+  )
+)
+

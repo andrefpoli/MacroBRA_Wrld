@@ -19,20 +19,22 @@ hc_plot_ft <- function(
   range     = TRUE,
   navigator = TRUE
   )
-  {
 
+  {
   # create plot object
-  ftwo_plot <- hc %>%
+  dyh_plot <- hc %>%
     hc_title(text = title) %>%
     hc_subtitle(text = subtitle) %>%
     hc_credits(
       enabled = TRUE,
       text    = paste0("Source: ", source),
-      style   = list(fontSize = "12px")
+      style   = list(color ="white",fontSize = "12px")
       ) %>%
-    hc_xAxis(title = FALSE) %>%
+    hc_xAxis(title = FALSE,
+      labels    = list(color ="white",style = list(fontSize = "12px"))
+      )%>%
     hc_yAxis(
-      labels    = list(format = "{value}%"),
+      labels    = list(color ="white",format = "{value}%",style = list(fontSize = "14px")),
       title     = FALSE,
       plotLines = list(
         list(
@@ -43,11 +45,12 @@ hc_plot_ft <- function(
         )
       ) %>%
     hc_tooltip(shared = TRUE) %>%
-    hc_add_theme(theme_fortietwo) %>%
+    hc_add_theme(theme_DYH) %>%
     hc_navigator(enabled = navigator)
 
+
     if (range) {
-      ftwo_plot <- ftwo_plot %>%
+      dyh_plot <- dyh_plot %>%
       hc_rangeSelector(
         selected          = 4,
         enabled           = TRUE,
@@ -55,8 +58,11 @@ hc_plot_ft <- function(
         inputEnabled      = FALSE,
         dropdown          = "always"
       )
-    } else ftwo_plot
+    } else dyh_plot
 
-  ftwo_plot
+  dyh_plot
 
-  }
+}
+
+
+
