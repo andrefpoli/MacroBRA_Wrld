@@ -28,24 +28,24 @@ hc_plot_ft <- function(
     hc_credits(
       enabled = TRUE,
       text    = paste0("Source: ", source),
-      style   = list(color ="white",fontSize = "12px")
+      style   = list(color ="black",fontSize = "12px")
       ) %>%
     hc_xAxis(title = FALSE,
-      labels    = list(color ="white",style = list(fontSize = "12px"))
+      labels    = list(color ="black",style = list(fontSize = "12px"))
       )%>%
     hc_yAxis(
-      labels    = list(color ="white",format = "{value}%",style = list(fontSize = "14px")),
+      labels    = list(color ="black",format = "{value}%",style = list(fontSize = "14px")),
       title     = FALSE,
       plotLines = list(
         list(
           value = 0,
-          color = "#1a1a1a",
-          width = 2
+          color = "#0D0808",
+          width = 1
           )
         )
       ) %>%
     hc_tooltip(shared = TRUE) %>%
-    hc_add_theme(theme_DYH) %>%
+    hc_add_theme(theme_DYH_2) %>%
     hc_navigator(enabled = navigator)
 
 
@@ -65,4 +65,4 @@ hc_plot_ft <- function(
 }
 
 
-
+#1a1a1a

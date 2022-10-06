@@ -236,7 +236,7 @@ ipca_region <- raw_ipca_region %>%
     ) %>%
   filter(region %in% c(
     "Bel\u00e9m - PA", "Fortaleza - CE", "Rio de Janeiro - RJ",
-    "S\u00e3o Paulo - SP", "Curitiba - PR", "Porto Alegre - RS")
+    "S\u00e3o Paulo - SP", "Curitiba - PR", "Belo Horizonte - MG")
     )
 
 

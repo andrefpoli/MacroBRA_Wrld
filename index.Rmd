@@ -57,7 +57,11 @@ colors_extra <- c(
   colors,
   turquoise  = "#419391",
   green_two  = "#839c56",
-  light_blue = "#3b89bc"
+  light_blue = "#3b89bc",
+  blue_ft = "#0D7680",
+  marrom_ft = "#8F223A",
+  grey_ft = "#505B70"
+  
   )
 
 # Load funcitons
@@ -167,7 +171,7 @@ Row {.tabset}
 
 ```{r section0_gdp_trend}
 gdp_trend <- gdp_growth_sector %>%
-  hchart("column", hcaes(x = date, y = value, group = sector), color = colors[1:4]) %>%
+  hchart("column", hcaes(x = date, y = value, group = sector), color = colors_extra[c("blue_ft","marrom_ft","grey_ft","yellow")]) %>%
   hc_plot_ft(
     title     = "GDP growth by sectors",
     subtitle  = "Accumulated growth rate in 4 quarters",
@@ -186,7 +190,7 @@ inflation_trend <- hchart(
        name = "Month over Month", showInLegend = TRUE
   ) %>%
   hc_add_series(
-    ipca_trend, "line", hcaes(x = date, y = `Year over Year (%)`),
+    ipca_trend, type = "line", hcaes(x = date, y = `Year over Year (%)`),
      name = "Year over Year", showInLegend = TRUE
   ) %>% 
   hc_plot_ft(
@@ -203,7 +207,7 @@ inflation_trend
 ```{r section0_unemployment_trend}
 unemployment_trend <- unemployment %>%
   hchart(
-    "area", hcaes(x = date, y = unemployment_rate), color = colors[1],
+    "area", hcaes(x = date, y = unemployment_rate), color = colors_extra["marrom_ft"],
     name = "Unemployment rate", fillOpacity = 0.1) %>%
   hc_plot_ft(
     title     = "Unemployment rate",
@@ -236,6 +240,7 @@ unemployment_map <- hcmap(
       )
     )
   ) %>% 
+  hc_colorAxis(stops = color_stops(colors = viridisLite::turbo(5, begin = 0)),type ="logarithmic") %>%
   hc_title(text = "Unemployment rate by states") %>% 
   hc_subtitle(text = paste0(
       "Quarterly data, updated until ", unemployment_states$date[1], " (PNADC-T)"
@@ -250,7 +255,7 @@ unemployment_map
 ```{r section0_primary_deficit_trend}
 primary_deficit_trend <- primary_deficit %>%
   hchart(
-    "area", hcaes(x = date, y = value), color = colors[1],
+   "area", hcaes(x = date, y = value), color = colors_extra["blue_ft"],
     name = "Primary Deficit", fillOpacity = 0.1
     ) %>%
   hc_plot_ft(
@@ -268,7 +273,7 @@ primary_deficit_trend
 real_interest_rate_trend <- real_interest_rate %>%
   hchart(
     "area", hcaes(x = date, y = value, group = variable),
-    color = colors[1:2], fillOpacity = 0.1
+    color = colors_extra[c("blue_ft","marrom_ft")], fillOpacity = 0.1
     ) %>%
   hc_plot_ft(
     title     = "Real interest rates",
@@ -444,8 +449,8 @@ gauge(
   gaugeSectors(
     success = c(85, 100),
     warning = c(50, 85),
-    danger  = c(0, 50),
-    colors = c("#224f20", "#b35c1e", "#b22200")
+    danger = c(0,50),
+    colors = c("#8F223A", "#E06710", "#01851C")
     )
   )
 ```
@@ -466,7 +471,7 @@ gdp_trend
 
 ```{r section1_ibcbr_trend}
 ibc_growth %>%
-  hchart("line", hcaes(x = date, y = yoy, group = variable), color = colors) %>%
+  hchart("line", hcaes(x = date, y = yoy, group = variable), color = colors_extra[c("blue_ft","marrom_ft","grey_ft","yellow","blue","orange")]) %>%
   hc_plot_ft(
     title     = "IBC-Br growth by region",
     subtitle  = "Accumulated growth rate in 12 months",
@@ -537,7 +542,7 @@ pmc %>%
 
 ```{r section1_pms}
 pms %>%
-  hchart("line", hcaes(x = date, y = value, group = variable), color = colors[1:2]) %>%
+  hchart("line", hcaes(x = date, y = value, group = variable), color = colors_extra[c("blue_ft","marrom_ft")]) %>%
   hc_plot_ft(
     title    = "Revenue and volume of services index: PMS/IBGE",
     subtitle = "Monthly percentage change (compared to the same month in the previous year)",
@@ -590,7 +595,7 @@ inflation_target %>%
 ipca_diffusion %>%
   hchart(
     "area", hcaes(x = date, y = value, group = variable),
-    color = colors[1], fillOpacity = 0.1) %>%
+    color = colors_extra[c("blue_ft")], fillOpacity = 0.1) %>%
   hc_plot_ft(
     title    = "Diffusion index - IPCA",
     subtitle = "",
@@ -613,14 +618,14 @@ inflation_trend
 
 ```{r section2_ipca_region}
 ipca_region %>%
-  hchart("column", hcaes(x = date, y = value, group = region), color = colors) %>%
+  hchart("column", hcaes(x = date, y = value, group = region), color = colors_extra[c("blue_ft","marrom_ft","grey_ft","yellow","blue","orange")]) %>%
   hc_plot_ft(
     title    = "Inflation by metropolitan region - IPCA",
     subtitle = "Monthly percentage change",
     source   = "IBGE",
     navigator = FALSE
     ) %>%
-  hc_rangeSelector(selected = 0)
+  hc_rangeSelector(selected = 2)
 ```
 
 
@@ -666,12 +671,13 @@ ipca_groups %>%
 
 ```{r section2_ipca_cores}
 ipca_cores %>%
-  hchart("line", hcaes(x = date, y = value, group = variable), color = colors[1:5]) %>%
+  hchart("line", hcaes(x = date, y = value, group = variable), color = colors_extra[c("blue_ft","marrom_ft","grey_ft","yellow","orange")]) %>%
   hc_plot_ft(
     title    = "CPI cores (IPCA)",
     subtitle = "Monthly percentage change",
     source   = "BCB"
-    )
+    ) %>%
+  hc_rangeSelector(selected = 2)
 ```
 
 ### IGP trend
@@ -720,14 +726,9 @@ big_numbers %>%
 ### Employment by category {.no-title}
 
 ```{r section3_employment_category}
+
 highchart() %>%
-  hc_chart(type = "item") %>% 
-  hc_title(text = "Employment by category") %>%
-  hc_subtitle(
-    text = paste0("In millions of employees, updated until ", employment_category$date[1])
-    ) %>%
-  hc_credits(enabled = TRUE, text = "Source: IBGE", style = list(fontSize = "12px")) %>%
-  hc_legend(labelFormat = '{name} <span style="opacity: 0.4">{y}</span>') %>%
+  hc_chart(type = "pie") %>% 
   hc_series(
     list(
       name = "Employees",
@@ -735,18 +736,27 @@ highchart() %>%
       data = {
         employment_category %>%
           select(-date) %>%
-          mutate(color = colors) %>%
+          mutate(color = colors_extra[c("blue_ft","marrom_ft","grey_ft","yellow","orange","turquoise")]) %>%
           unname() %>%
           transpose(.names = NULL)
         },
       dataLabels = list(
         enabled = TRUE,
         format = "{point.name} million"
-      ),
-      center = c("50%", "88%"),
-      size = "50%"
+      )
+      #center = c("50%", "88%"),
+      #size = "50%"
     )
-  )
+  ) %>%
+  hc_plot_ft(
+    title    = "Employment by category",
+    subtitle = paste0("In millions of employees, updated until ", employment_category$date[1]),
+    source   = "IBGE",
+    range     = FALSE,
+    navigator = FALSE
+    )
+
+
 ```
 
 

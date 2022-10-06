@@ -20,6 +20,7 @@ etl_labor <- function(){
 
 
 # Install/load packages
+
 # if (!require("pacman")) install.packages("pacman")
 # pacman::p_load(
 #   "PNADcIBGE",
@@ -32,8 +33,24 @@ etl_labor <- function(){
 #   "rvest",
 #   "here"
 #   )
+#
+# if (!"package:PNADcIBGE" %in% search()) { attachNamespace("PNADcIBGE") }
 
-if (!"package:PNADcIBGE" %in% search()) { attachNamespace("PNADcIBGE") }
+# if (!require("pacman")) install.packages("pacman")
+# pacman::p_load(
+#   "PNADcIBGE",
+#   "tidyverse",
+#   "lubridate",
+#   "sidrar",
+#   "janitor",
+#   "survey",
+#   "convey",
+#   "rvest",
+#   "here"
+#   )
+#
+# if (!"package:PNADcIBGE" %in% search()) { attachNamespace("PNADcIBGE") }
+
 
 
 # Parameters --------------------------------------------------------------
