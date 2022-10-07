@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [main, master]
+    branches: [gh_pages, main]
   schedule:
     - cron: "0 8 * * *"
 

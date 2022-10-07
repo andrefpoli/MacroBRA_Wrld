@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - master
+      - gh_pages
   pull_request:
     branches:
       - main
       - master
+      - gh_pages
 
 name: R-CMD-check
 
