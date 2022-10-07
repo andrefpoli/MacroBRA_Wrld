@@ -34,7 +34,8 @@ etl_econ_activity <- function(){
 #   "GetBCBData",
 #   "zoo",
 #   "mgsub",
-#   "janitor"
+#   "janitor",
+#   "rio"
 #   )
 
 
@@ -46,7 +47,7 @@ etl_econ_activity <- function(){
 
 
 # Load useful functions
-# source("./R/utils.R")
+#source("./R/utils.R")
 
 
 # List of URLs to get data from different sources
@@ -70,17 +71,29 @@ api_sidra <- list(
   # GDP (R$ million, current prices)
   api_gdp_brl = "/t/1846/n1/all/v/all/p/all/c11255/90687,90691,90696,90707,93404,93405,93406,93407,93408/d/v585%200",
 
-  # PMC (retail trade from IBGE)
+  # PMC (retail trade from IBGE) #DEPRECATED
   api_pmc = "/t/3416/n1/all/v/all/p/all/c11046/90668/d/v564%201,v565%201",
 
-  # PMC (expanded retail trade from IBGE)
+  # PMC ATUALIZADO (Retail trade IBGE)
+  api_pmc_ATT = "/t/8185/n1/all/v/11709/p/all/c11046/all/d/v11709%201",
+
+  # PMC (expanded retail trade from IBGE) #DEPRECATED
   api_pmc_expanded = "/t/3417/n1/all/v/all/p/all/c11046/90668/d/v1186%201,v1190%201",
 
-  # PMS (Monthly Service Survey from IBGE)
+  # PMC (expanded retail trade from IBGE)
+  api_pmc_expanded_ATT = "/t/8186/n1/all/v/11709/p/all/c11046/all/d/v11709%201",
+
+  # PMS (Monthly Service Survey from IBGE) #DEPRECATED
   api_pms = "/t/6442/n1/all/v/all/p/all/c11046/90668/d/v8676%201,v8677%201",
 
+  # PMS (Monthly Service Survey from IBGE)
+  api_pms_ATT = "/t/8162/n1/all/v/11624/p/all/c11046/all/c12355/107071/d/v11624%201",
+
+  # PIM (Monthly Industrial Survey from IBGE - YoY rate of change) #DEPRECATED
+  api_pim = "/t/3653/n1/all/v/3139/p/all/c544/129314,129315,129316,129338/d/v3139%201",
+
   # PIM (Monthly Industrial Survey from IBGE - YoY rate of change)
-  api_pim = "/t/3653/n1/all/v/3139/p/all/c544/129314,129315,129316,129338/d/v3139%201"
+  api_pim_ATT = "/t/8159/n1/all/v/11602/p/all/c544/129314,129315,129316,129338/d/v11602%201"
 
   )
 
@@ -135,37 +148,42 @@ raw_gdp_cur_prices <- sidrar::get_sidra(api = api_sidra$api_gdp_brl) %>%
 
 
 # PMC (retail trade from IBGE)
-raw_pmc <- sidrar::get_sidra(api = api_sidra$api_pmc) %>%
+raw_pmc <- sidrar::get_sidra(api = api_sidra$api_pmc_ATT) %>%
   select(
-    date     = "M\u00eas (C\u00f3digo)",
-    variable = "Vari\u00e1vel",
+    date     = "Mês (Código)",
+    #variable = "Variável",
+    #tipo_cod = "Tipos de índice (Código)", # Nova variável incluida em 071022
+    variable = "Tipos de índice", # nova variavel incluida em 071022, equivalente à variable
     measure  = "Unidade de Medida",
     value    = "Valor"
   )
 
 
 # PMC (expanded retail trade from IBGE)
-raw_pmc_expanded <- sidrar::get_sidra(api = api_sidra$api_pmc_expanded) %>%
+raw_pmc_expanded <- sidrar::get_sidra(api = api_sidra$api_pmc_expanded_ATT) %>%
   select(
     date     = "M\u00eas (C\u00f3digo)",
-    variable = "Vari\u00e1vel",
+    #variable = "Vari\u00e1vel",
+    #tipo_cod = "Tipos de índice (Código)", # Nova variável incluida em 071022
+    variable = "Tipos de índice", # nova variavel incluida em 071022, equivalente à variable
     measure  = "Unidade de Medida",
     value    = "Valor"
   )
 
-
 # PMS (Monthly Service Survey from IBGE)
-raw_pms <- sidrar::get_sidra(api = api_sidra$api_pms) %>%
+raw_pms <- sidrar::get_sidra(api = api_sidra$api_pms_ATT) %>%
   select(
     date     = "M\u00eas (C\u00f3digo)",
-    variable = "Vari\u00e1vel",
+    #variable = "Vari\u00e1vel",
+    #tipo_cod = "Tipos de índice (Código)", # Nova variável incluida em 071022
+    variable = "Tipos de índice", # nova variavel incluida em 071022, equivalente à measure
     measure  = "Unidade de Medida",
     value    = "Valor"
   )
 
 
 # PIM (Monthly Industrial Survey from IBGE - YoY rate of change)
-raw_pim <- sidrar::get_sidra(api = api_sidra$api_pim) %>%
+raw_pim <- sidrar::get_sidra(api = api_sidra$api_pim_ATT) %>%
   select(
     date     = "M\u00eas (C\u00f3digo)",
     variable = "Se\u00e7\u00f5es e atividades industriais (CNAE 2.0)",
@@ -391,7 +409,6 @@ pmc <- bind_rows(raw_pmc_expanded, raw_pmc) %>%
       )
     ) %>%
   tidyr::drop_na()
-
 
 # PMS growth
 pms <- raw_pms %>%
