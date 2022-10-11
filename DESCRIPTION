@@ -1,4 +1,4 @@
-Package: Indicadores_Macro
+Package: MacroIndicatorsTracker
 Title: Dashboard: Macroeconomic Data of Brazil and International
 Version: 0.0.1
 Authors@R: 
@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "contato@dynamic-hedge.com.br",
            comment = c(ORCID = "0000-0002-7491-6930"))
-Description: Dashboard interativo de dados macroeconômicos brasileiros e  internacionais.
+Description: Dashboard interativo de dados macroeconômicos brasileiros e internacionais.
 License: CC BY 4.0
 Encoding: UTF-8
 LazyData: true
