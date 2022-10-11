@@ -35,9 +35,10 @@ etl_econ_activity <- function(){
 #   "zoo",
 #   "mgsub",
 #   "janitor",
-#   "rio"
+#   "rio",
+#   "devtools"
 #   )
-
+#
 
 
 # Parameters --------------------------------------------------------------
@@ -47,7 +48,7 @@ etl_econ_activity <- function(){
 
 
 # Load useful functions
-#source("./R/utils.R")
+# source("./R/utils.R")
 
 
 # List of URLs to get data from different sources
@@ -109,11 +110,11 @@ api_bcb <- list(
   # IBC-Br (economic activity index from BCB)
   api_ibc = c(
     "Brasil"       = 24364,
-    "Norte"        = 25407,
-    "Nordeste"     = 25389,
     "Centro-Oeste" = 25382,
-    "Sudeste"      = 25395,
-    "Sul"          = 25403
+    "Nordeste"     = 25389,
+    "Norte"        = 25407,
+    "Sul"          = 25403,
+    "Sudeste"      = 25395
     )
 
   )
@@ -223,7 +224,7 @@ raw_nuci <- GetBCBData::gbcbd_get_series(
 raw_ibc <- GetBCBData::gbcbd_get_series(
   id          = api_bcb$api_ibc,
   first.date  = "2003-01-27",
-  use.memoise = FALSE
+  use.memoise = TRUE # ALTERADO P/ NAO DAR ERRO NA BUSCA
   )
 
 
