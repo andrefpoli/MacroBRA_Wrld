@@ -38,7 +38,7 @@ etl_econ_activity <- function(){
 #   "rio",
 #   "devtools"
 #   )
-#
+
 
 
 # Parameters --------------------------------------------------------------
@@ -104,7 +104,7 @@ api_bcb <- list(
 
   # Installed Capacity Utilization Level (NUCI/FGV)
   api_nuci = c(
-    "Installed Capacity Utilization Level" = 28561
+    "Utilização da capacidade instalada – indústria de transformação (FGV) - Dados dessazonalizados" = 28561
     ),
 
   # IBC-Br (economic activity index from BCB)
