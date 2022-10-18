@@ -1,18 +1,17 @@
 Package: MacroIndicatorsTracker
 Title: Dashboard: Macroeconomic Data of Brazil and International
-Version: 0.0.1
+Version: 0.0.0.9000
 Authors@R: 
     person(given = "Andre",
            family = "Ferreira",
            role = c("aut", "cre"),
            email = "contato@dynamic-hedge.com.br",
-           comment = c(ORCID = "0000-0002-7491-6930"))
+           comment = c(ORCID = "0000-0001-9592-0069"))
 Description: Dashboard interativo de dados macroeconômicos brasileiros e internacionais.
-License: CC BY 4.0
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.0.0
 Imports: 
     pacman,
     sidrar,

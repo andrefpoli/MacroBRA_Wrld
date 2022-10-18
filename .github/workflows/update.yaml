@@ -4,7 +4,8 @@ on:
     - gh_pages
     - main
   schedule:
-    - cron: "1 9,11,19 * * *"
+    - description: "Schedule jub to update the dashboard timeseries adn graphs"
+    - cron: "1 12,13,15,21,22 * * *"
 
 name: Dashboard Update
 
@@ -25,7 +26,7 @@ jobs:
       - name: Install curl
         run: sudo apt -y install libcurl4-openssl-dev
 
-      - name: Cache packages
+      - name: Cache R packages #Cache packages
         uses: actions/cache@v2
         with:
           path: ${{ env.RENV_PATHS_ROOT }}
@@ -74,7 +75,7 @@ jobs:
       - name: Render R Markdown
         run: |
           devtools::load_all()
-          withr::local_locale(c("LC_TIME" = "en_US.UTF-8"))
+          withr::local_locale(c("LC_TIME" = "pt_BR.UTF-8"))
           retry(rmarkdown::render(input = "index.Rmd", output_file = "index", output_dir = "docs"))
           labor_path <- "inst/extdata/labor.Rdata"
           if (file.info(labor_path)[, "size"] > 90000000) {file.remove(labor_path)}

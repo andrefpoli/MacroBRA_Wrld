@@ -224,7 +224,7 @@ raw_nuci <- GetBCBData::gbcbd_get_series(
 raw_ibc <- GetBCBData::gbcbd_get_series(
   id          = api_bcb$api_ibc,
   first.date  = "2003-01-27",
-  use.memoise = TRUE # ALTERADO P/ NAO DAR ERRO NA BUSCA
+  use.memoise = FALSE # ALTERADO P/ NAO DAR ERRO NA BUSCA
   )
 
 
