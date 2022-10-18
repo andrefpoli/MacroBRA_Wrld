@@ -4,7 +4,6 @@ on:
     - gh_pages
     - main
   schedule:
-    - description: "Schedule jub to update the dashboard timeseries adn graphs"
     - cron: "1 12,13,15,21,22 * * *"
 
 name: Dashboard Update
