@@ -24,7 +24,7 @@ etl_econ_activity <- function(){
 # Packages ----------------------------------------------------------------
 
 
-# Install/load packages
+#Install/load packages
 # if (!require("pacman")) install.packages("pacman")
 # pacman::p_load(
 #   "tidyverse",
@@ -55,13 +55,14 @@ etl_econ_activity <- function(){
 url_list <- list(
 
   # ICVA (spreadsheet data of the Cielo Index)
-  url_icva = "https://apicatalog.mziq.com/filemanager/v2/d/4d1ebe73-b068-4443-992a-3d72d573238c/3e864198-0b72-c970-1771-80cd8c338a30?origin=2",
+  url_icva = "https://api.mziq.com/mzfilemanager/v2/d/4d1ebe73-b068-4443-992a-3d72d573238c/163a9070-918c-2f20-035e-b40da951bc9f?origin=2",
 
   # Vehicle Production (spreadsheet data from ANFAVEA)
   url_anfavea = "http://www.anfavea.com.br/docs/SeriesTemporais_Autoveiculos.xlsm"
 
 )
 
+#https://apicatalog.mziq.com/filemanager/v2/d/4d1ebe73-b068-4443-992a-3d72d573238c/3e864198-0b72-c970-1771-80cd8c338a30?origin=2
 
 # List of parameters to get data from SIDRA/IBGE website
 api_sidra <- list(
